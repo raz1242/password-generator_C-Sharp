@@ -41,19 +41,29 @@ namespace PasswordApp{
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
 
         }
+
+        /* Copy to Clipboard Button Click Event
+         * @param sender: The source of the event
+         * @param e: Event arguments
+         */
         private void button1_Click_1(object sender, EventArgs e) {
             if (!string.IsNullOrEmpty(generatedPassword))
                 Clipboard.SetText(generatedPassword);
         }
+
+        /* Password Generator Button Click Event
+         * @param sender: The source of the event
+         * @param e: Event arguments
+         */
         private void button1_Click(object sender, EventArgs e) {
             int length = (int)numericUpDown1.Value;
             char[] character_list;
             if (radioButton1.Checked)
-                character_list = PasswordGenerate.character_list1;
+                character_list = PasswordGenerate.character_list_all_symbols;
             else if (radioButton2.Checked)
-                character_list = PasswordGenerate.character_list2;
+                character_list = PasswordGenerate.character_list_only_numbers_and_letters_option;
             else
-                character_list = PasswordGenerate.character_list3;
+                character_list = PasswordGenerate.character_list_only_numbers_option;
             generatedPassword = PasswordGenerate.PasswordGenerator1(length, character_list);
             textBox3.Text = generatedPassword;
             if (checkBox1.Checked)
